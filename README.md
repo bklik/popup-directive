@@ -26,3 +26,6 @@ Last, simply add a _popup_ attribute to an `<input>`.
 ```
 
 **Note:** A _template_ directive is also included. Modify it to create your own popup UI!
+
+### Example
+http://www.brentonklik.com/popup
