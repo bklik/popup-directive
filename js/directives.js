@@ -85,11 +85,6 @@ angular.module('popup.directives', [])
                     }
                 };
 
-                // Used by content directives to set the value of the popup's element
-                var popupResult = function(result) {
-                    $(scope.target).val(result);
-                };
-
                 // Events to appropriately handle the opening and closing of the popup
                 $(element).bind("focus", openPopup);
                 $(element).bind("keydown", function(event){
