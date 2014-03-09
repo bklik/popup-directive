@@ -30,6 +30,7 @@ angular.module('popup.directives', [])
                 var strPopup = null;    // String version of the popup's HTML
                 var cPopup = null;      // Compiled version of the popup
                 var popup = null;     // Pointer to the current element's popup
+                var bodyWidth = 0;
 
                 // Wait until the directive is loaded before initializing variables
                 $timeout(function() {
@@ -50,6 +51,17 @@ angular.module('popup.directives', [])
                     var top = offset.top + $(element).outerHeight() + 16;
                     var left = offset.left;
 
+                    var popupWidth = left + popup.outerWidth();
+
+                    // If the popup would extend off the current window size,
+                    // justify the popup to the right instead of left.
+                    if(popupWidth > bodyWidth) {
+                        left = (offset.left + $(element).outerWidth()) - popup.outerWidth();
+                        popup.addClass("arrow-right");
+                    } else {
+                        popup.removeClass("arrow-right");
+                    }
+
                     popup.css('top', top);
                     popup.css('left', left);
                 };
@@ -59,12 +71,20 @@ angular.module('popup.directives', [])
                     // Make sure any currently open popups are closed
                     closePopup();
 
+                    bodyWidth = $("body").outerWidth();
+
                     // Add the popup to the DOM and set it's pointer
                     $("body").append(cPopup);
                     popup = $(cPopup);
 
+                    /*
+                    if(bodyWidth <= 600)
+                        $(element).blur();
+                    */
+
                     // Add events to handle the appropriate closing of the popup
                     $(window).bind("mousedown", closePopup);
+                    $(window).bind("resize", resizeHandler);
                     popup.bind("mousedown", preventClose);
 
                     // Place the popup appropriately
@@ -78,16 +98,20 @@ angular.module('popup.directives', [])
                 var closePopup = function(event) {
                     if(popup != null) {
                         $(window).unbind("mousedown", closePopup);
+                        $(window).unbind("resize", resizeHandler);
                         popup.unbind("mousedown", preventClose);
+                        popup.removeClass("arrow-right");
 
                         popup.remove();
                         popup = null;
                     }
                 };
 
-                // Used by content directives to set the value of the popup's element
-                var popupResult = function(result) {
-                    $(scope.target).val(result);
+                // Handler for whenever the window size changes while the popup
+                // is open.
+                var resizeHandler = function(event) {
+                    bodyWidth = $("body").outerWidth();
+                    placePopup();
                 };
 
                 // Events to appropriately handle the opening and closing of the popup

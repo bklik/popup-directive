@@ -39,6 +39,7 @@
 .popup {
     background: white;
     border: 1px solid gray;
+    border-radius: .25em;
     box-shadow: 0 .25em 1em rgba(0, 0, 0, .35);
     display: inline-block;
     min-height: 1em;
@@ -68,6 +69,11 @@
         -webkit-transform: rotate(45deg);
         -moz-transform: rotate(45deg);
         transform: rotate(45deg);
+    }
+
+    &.arrow-right:after {
+        left: auto;
+        right: 1em;
     }
 }
 
