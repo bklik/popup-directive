@@ -77,10 +77,12 @@ angular.module('popup.directives', [])
                     $("body").append(cPopup);
                     popup = $(cPopup);
 
-                    /*
-                    if(bodyWidth <= 600)
+                    // Check for mobile device. If mobile, blur the input to prevent
+                    // the keyboard from opening.
+                    if(isMobile()) {
+                        $(element).addClass("popup-highlight");
                         $(element).blur();
-                    */
+                    }
 
                     // Add events to handle the appropriate closing of the popup
                     $(window).bind("mousedown", closePopup);
@@ -101,6 +103,7 @@ angular.module('popup.directives', [])
                         $(window).unbind("resize", resizeHandler);
                         popup.unbind("mousedown", preventClose);
                         popup.removeClass("arrow-right");
+                        $(element).removeClass("popup-highlight");
 
                         popup.remove();
                         popup = null;
@@ -112,6 +115,13 @@ angular.module('popup.directives', [])
                 var resizeHandler = function(event) {
                     bodyWidth = $("body").outerWidth();
                     placePopup();
+                };
+
+                // Mobile check function from http://detectmobilebrowsers.com/
+                var isMobile = function() {
+                    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) )
+                        return true;
+                    return false;
                 };
 
                 // Events to appropriately handle the opening and closing of the popup
