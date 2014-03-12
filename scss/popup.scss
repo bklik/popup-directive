@@ -82,5 +82,8 @@
 }
 
 .template-content {
+    // These attributes are required in order for your content to appear
+    // on top of the popup arrow.
+    position: relative;
     z-index: 1;
 }
