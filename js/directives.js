@@ -139,6 +139,7 @@ angular.module('popup.directives', [])
                 // Listen for a request to update the element's value, and do so
                 scope.$on("UPDATE_POPUP", function(event, message) {
                     element.val(message);
+                    element.trigger('input');
                 });
             }
         }
