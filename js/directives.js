@@ -105,7 +105,7 @@ angular.module('popup.directives', [])
                         popup.removeClass("arrow-right");
                         $(element).removeClass("popup-highlight");
 
-                        popup.remove();
+                        popup.detach();
                         popup = null;
                     }
                 };
