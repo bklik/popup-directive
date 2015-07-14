@@ -18,7 +18,7 @@ In your app's directives.js file, add the popup.directives module.
 angular.module('myApp', ['popupDirective']);
 ```
 
-Last, simply add a _popup_ attribute to an `<input>`.
+Last, simply add a _popup-directive_ element you reference from an event on an `<input>`.
 ```html
 <input type="text" ng-focus="popup01.show($event)">
 <popup-directive api="popup01">Test</popup-directive>
