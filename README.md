@@ -13,7 +13,7 @@ Link to popup's CSS and Javascript files.
 <script src="popupDirective/popupDirective.js"></script>
 ```
 
-In your app's directives.js file, add the popup.directives module.
+In your app's directives.js file, add the popupDirective module.
 ```javascript
 angular.module('myApp', ['popupDirective']);
 ```
