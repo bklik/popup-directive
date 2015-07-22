@@ -14,7 +14,8 @@ angular.module('popupDirective', ['styleSheetFactory'])
 .directive('popupDirective', ['styleSheetFactory', function(styleSheetFactory) {
     return {
         scope: {
-            api: '='
+            api: '=',
+            hideCallback: '&'
         },
         restrict: 'E',
         link: function($scope, $element, $attrs) {
@@ -111,6 +112,10 @@ angular.module('popupDirective', ['styleSheetFactory'])
             };
 
             var hide = function() {
+                if(typeof $scope.hideCallback == 'function') {
+                    $scope.hideCallback();
+                };
+
                 $element.removeClass('show');
                 target.removeEventListener('mousedown', preventClose);
                 target.removeEventListener('keydown', hide);
@@ -150,7 +155,7 @@ angular.module('popupDirective', ['styleSheetFactory'])
 
                 hide: function() {
                     hide();
-                }
+                },
             };
         }
     }
