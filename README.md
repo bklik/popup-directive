@@ -4,7 +4,8 @@ Popup is an Angular directive for creating custom input popup UIs.
 
 **Requirements**
 
-* [AngularJS (1.2+)](http://angularjs.org/)
+* [AngularJS](http://angularjs.org/)
+* [bklik/styleSheetFactory](https://github.com/bklik/styleSheetFactory)
 
 ### Installation
 
