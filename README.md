@@ -5,22 +5,22 @@ Popup is an Angular directive for creating custom input popup UIs.
 **Requirements**
 
 * [AngularJS](http://angularjs.org/)
-* [bklik/styleSheetFactory](https://github.com/bklik/styleSheetFactory)
+* [bklik/style-sheet-factory](https://github.com/bklik/style-sheet-factory)
 
 ### Installation
 
 Link to popup's CSS and Javascript files.
 ```html
-<script src="popupDirective/popupDirective.js"></script>
+<script src="js/popup-directive.js"></script>
 ```
 
 In your app's directives.js file, add the popupDirective module.
 ```javascript
-angular.module('myApp', ['popupDirective']);
+angular.module('myApp', ['popup-directive']);
 ```
 
-Last, simply add a `<popup-directive>` element you reference from an event on an element.
+Last, simply add a `<popup>` element you reference from an event on an element.
 ```html
 <input type="text" ng-focus="popup01.show($event)">
-<popup-directive api="popup01">Test</popup-directive>
+<popup api="popup01">Test</popup>
 ```
