@@ -148,22 +148,23 @@ angular.module('popup-directive', ['style-sheet-factory'])
             // Add this directive's styles to the document's stylesheet.
             styleSheetFactory.addCSSRule(styleSheet, 'popup',
                 'background: white;' +
-                'border: 1px solid gray;' +
                 'border-radius: 2px;' +
-                'box-shadow: 0 2px 8px rgba(black, .25);' +
+                'box-shadow: 0 1px 4px rgba(0,0,0,0.25);' +
                 'display: none;' +
                 'min-height: 32px;' +
                 'min-width: 32px;' +
                 'overflow: visible;' +
                 'padding: 8px;' +
                 'position: absolute;' +
+                'transform: translateZ(0);' +
+                prefix+'transform: translateZ(0);' +
                 'z-index: 1;'
             );
 
             styleSheetFactory.addCSSRule(styleSheet, 'popup::after', 
                 'background-color: white;' +
-                'border-left: 1px solid gray;' +
-                'border-top: 1px solid gray;' +
+                'border-left: 1px solid rgba(0,0,0,0.08);' +
+                'border-top: 1px solid rgba(0,0,0,0.08);' +
                 'box-sizing: border-box;' +
                 'content: \'\';' +
                 'display: block;' +
@@ -174,7 +175,7 @@ angular.module('popup-directive', ['style-sheet-factory'])
                 'height: 10px;' +
                 'width: 10px;' +
                 '' +
-                '-'+prefix+'-transform: rotate(45deg);' +
+                prefix+'transform: rotate(45deg);' +
                 'transform: rotate(45deg);'
             );
 
@@ -189,12 +190,12 @@ angular.module('popup-directive', ['style-sheet-factory'])
             styleSheetFactory.addCSSKeyframes(styleSheet, 'popup-slidein',
                 'from {' +
                     'opacity: 0;' +
-                    '-'+prefix+'-transform: translateY(16px);' +
+                    prefix+'transform: translateY(16px);' +
                     'transform: translateY(16px);' +
                 '}' +
                 'to {' +
                     'opacity: 1;' +
-                    '-'+prefix+'-transform: translateY(0);' +
+                    prefix+'transform: translateY(0);' +
                     'transform: translateY(0);' +
                 '}'
             );
