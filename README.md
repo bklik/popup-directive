@@ -1,4 +1,4 @@
-# popupDirective
+# Popup Directive
 
 Popup is an Angular directive for creating custom input popup UIs.
 
